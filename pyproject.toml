@@ -1,0 +1,32 @@
+[project]
+name = "beancount-duckdb"
+version = "0.1.0"
+description = "Load Beancount ledger data into a queryable DuckDB database"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.13"
+dependencies = [
+    "beancount>=3.2.0",
+    "beanquery>=0.2.0",
+    "duckdb>=1.0",
+    "pyyaml>=6.0",
+]
+
+[project.scripts]
+beancount-duckdb = "beancount_duckdb.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["beancount_duckdb"]
+
+[dependency-groups]
+dev = ["pytest", "ruff", "ty", "sqlfluff"]
+
+[tool.ruff.lint]
+ignore = ["COM812"]
+
+[tool.sqlfluff.core]
+dialect = "duckdb"
