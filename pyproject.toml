@@ -1,6 +1,6 @@
 [project]
 name = "beancount-duckdb"
-version = "0.1.0"
+version = "0.0.1"
 description = "Load Beancount ledger data into a queryable DuckDB database"
 readme = "README.md"
 license = { file = "LICENSE" }

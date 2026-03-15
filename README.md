@@ -2,7 +2,7 @@
 
 An opinionated, plugin-ready analytics layer that loads [Beancount](https://beancount.github.io/) ledger data into a queryable DuckDB database.
 
-Beancount is the source of truth. This tool mirrors ledger data into DuckDB so you can query it with standard SQL — CTEs, window functions, aggregations — from Python, [Marimo](https://marimo.io/) notebooks, or any SQL-capable tool.
+Beancount is the source of truth. This tool mirrors ledger data into DuckDB so you can query it with standard SQL — CTEs, window functions, aggregations — from Python or any SQL-capable tool.
 
 ## Installation
 
@@ -26,7 +26,7 @@ beancount-duckdb = { git = "https://github.com/slimslickner/beancount-duckdb" }
 
 ## Usage
 
-### Python / Marimo
+### Python
 
 ```python
 import beancount_duckdb
@@ -34,8 +34,6 @@ import beancount_duckdb
 conn = beancount_duckdb.load("main.bean")
 # conn is an open duckdb.DuckDBPyConnection — query it directly
 ```
-
-In a Marimo notebook with SQL cells, pass the connection as the data source via `mo.sql(..., engine=conn)`.
 
 Custom views from `--post-sql` can be passed at load time and are baked into the returned connection:
 
