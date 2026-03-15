@@ -102,8 +102,8 @@ def _exec_script(conn: duckdb.DuckDBPyConnection, sql: str) -> None:
 def load(
     bean_file: Path | str,
     path: Path | str | None = None,
-    post_sql_files: list[Path] | None = None,
-    tags_yaml: Path | None = None,
+    post_sql_files: list[Path | str] | None = None,
+    tags_yaml: Path | str | None = None,
 ) -> duckdb.DuckDBPyConnection:
     """Parse *bean_file* and load all directives into a DuckDB database.
 
@@ -121,8 +121,8 @@ def load(
     return loader.load(
         Path(bean_file),
         path=Path(path) if path is not None else None,
-        post_sql_files=post_sql_files,
-        tags_yaml=tags_yaml,
+        post_sql_files=[Path(f) for f in post_sql_files] if post_sql_files else None,
+        tags_yaml=Path(tags_yaml) if tags_yaml is not None else None,
     )
 
 
